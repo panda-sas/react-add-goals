@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import "./App.css";
 import CourseInput from "./components/CourseGoals/CourseInput/CourseInput";
-import CourseGoalsList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
+import CourseGoalList from "./components/CourseGoals/CourseGoalList/CourseGoalList";
 
 const App = () => {
   const [courseGoals, setCourseGoals] = useState([
-    { text: "Do all exercises!", id: "g1" },
-    { text: "Finish the course", id: "g2" }
+    { text: "Do all exercises!", id: 'g1 '},
+    { text: "Finish the course", id: 'g2' }
   ]);
 
   const addGoalHandler = enteredText => {
     setCourseGoals(prevGoals => {
-      const updatedGoals = [];
+      const updatedGoals = [...prevGoals];
       updatedGoals.unshift({text: enteredText, id: Math.random().toString()});
       return updatedGoals;
     });
@@ -30,9 +30,9 @@ const App = () => {
 
   if (courseGoals.length > 0) {
     content = (
-      <CourseGoalsList items={courseGoals} onDeleteItem = {deleteItemHandler} />
+      <CourseGoalList items={courseGoals} onDeleteItem = {deleteItemHandler} />
     );
-  };
+  }
 
 
   return (
